@@ -13,10 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/hello_world', function() {
-    return view('hello_world');
-});
+// アロー演算子を用いたルーティング
+Route::get('/hello_world', fn() =>view('hello_world'));
+
+// 引数を用いたルーティング
+Route::get('/hello', fn() => view('hello',[
+    'name' => 'ミナミ',
+    'course' => 'laravel'
+]));
+
+// レイアウト
+Route::get('/', fn() => view('index'));
+Route::get('/curriculum', fn() => view('curriculum'));
